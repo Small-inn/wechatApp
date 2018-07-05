@@ -1,0 +1,45 @@
+<import src="post-item/post-item-template.wxml" />
+<view>
+  <swiper indicator-dots="true" autoplay="true" circular="true">
+    <block wx:for="{{imgUrls}}" wx:key="*this">
+      <swiper-item class="img-container">
+        <image class="img-item" src="{{item}}"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+  <block>
+    <!-- 微信只是实现模板化，并没有实现组件化，所以在模板下是不能写业务逻辑的  -->
+    <!-- 模板传递数据是通过data进行传输的  -->
+    <!-- <template is="postItem" data="{{text}}" /> -->
+    <view class="post-container">
+      <view class="post-info">
+        <image class="avatar" src="/images/avatar3.jpg"></image>
+        <text class="time">Nov 25 2016</text>
+      </view>
+      <image class="post-image" src="/images/bg2.jpg"></image>
+      <text class="post-graph">是大多数的罚款了电视剧弗兰克的减肥法就开始放假飞快的萨放假了肯定是减肥了开始减肥离开房间的雷克萨放假了看电视就离开</text>
+      <view class="post-like">
+        <!-- <image class="visit" src=""></image> -->
+        <text class="visit-count">92</text>
+        <!-- <image class="love" src=""></image> -->
+        <text class="love-count">65</text>
+      </view>
+    </view>
+    <block wx:for="{{post_content}}" wx:for-item="item" wx:key="*this">
+      <view class="post-container">
+          <view class="post-info">
+            <image class="avatar" src="/images/avatar3.jpg"></image>
+            <text class="time">Nov 25 2016</text>
+          </view>
+          <image class="post-image" src="/images/bg2.jpg"></image>
+          <text class="post-graph">是大多数的罚款了电视剧弗兰克的减肥法就开始放假飞快的萨放假了肯定是减肥了开始减肥离开房间的雷克萨放假了看电视就离开</text>
+          <view class="post-like">
+            <!-- <image class="visit" src=""></image> -->
+            <text class="visit-count">92</text>
+            <!-- <image class="love" src=""></image> -->
+            <text class="love-count">65</text>
+          </view>
+      </view> 
+    </block>
+  </block>
+</view>

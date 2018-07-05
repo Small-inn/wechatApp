@@ -1,0 +1,29 @@
+.container {
+  background-color: #b3d4db
+}
+
+.user-avatar {
+  width:128rpx;
+  height:128rpx;
+  margin:20rpx;
+  border-radius:50%;
+  background-size: cover;
+
+}
+
+.user-name {
+  color: #aaa;
+}
+
+.moto-container {
+  margin-top: 200rpx;
+}
+
+
+.moto {
+  border-radius: 20rpx;
+  padding: 10rpx 20rpx;
+  background: linear-gradient(to right, #02F7E5, #0BA7EA);
+  color: #fff; 
+}
+

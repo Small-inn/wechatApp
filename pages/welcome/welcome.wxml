@@ -1,0 +1,9 @@
+<view class="container">
+  <block>
+    <image class="user-avatar" src="https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIdj0f6DTBZFkOpnXmHw2JBOEr5JHEmzDicJb6xMsrrGHhaMr1QPx40oHNmluI6Wwfgjy8eCJPOAXg/132"></image>
+    <text class="user-name">{{userInfo.name}}</text>
+  </block>
+  <view class="moto-container">
+    <text class="moto" bindtap="onClickTap">{{userInfo.textWord}}</text>
+  </view>
+</view>
