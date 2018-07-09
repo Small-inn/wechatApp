@@ -1,16 +1,16 @@
 <template name="postItem">
-  <view class="postItem-container">
-    <view class="info">
-      <image class="avatar" src="/images/bg1.jpg"></image>
-      <text class="time">Nov 25 2016</text>
+  <view class="post-container">
+    <view class="post-info">
+      <image class="avatar" src="{{avatar}}"></image>
+      <text class="time">{{date}}</text>
     </view>
-    <image class="" src="/images/bg2.jpg"></image>
-    <text class="grap">是大多数的罚款了电视剧弗兰克的减肥法就开始放假飞快的萨放假了肯定是减肥了开始减肥离开房间的雷克萨放假了看电视就离开</text>
-    <view class="wrapper">
-      <image class="visit" src=""></image>
-      <text class="visit-count">92</text>
-      <image class="love" src=""></image>
-      <text class="love-count">65</text>
+    <image class="post-image" src="{{imgSrc}}"></image>
+    <text class="post-graph">{{contont}}</text>
+    <view class="post-like">
+      <!-- <image class="visit" src=""></image> -->
+      <text class="visit-count">{{reading}}</text>
+      <!-- <image class="love" src=""></image> -->
+      <text class="love-count">{{collection}}</text>
     </view>
   </view>
 </template>

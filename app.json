@@ -2,6 +2,7 @@
   "pages":[
     "pages/welcome/welcome",
     "pages/posts/post", 
+    "pages/post-detail/post-detail",
     "pages/index/index",
     "pages/logs/logs"
   ],
