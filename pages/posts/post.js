@@ -17,13 +17,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    /**
+     * 在onload方法中，不是异步的去执行一个数据绑定，则不需要使用this.setData,this.setData()是同步方法 
+     */ 
     this.setData({post_content: postData})
   },
 
   onPostTap: function(event) {
-    console.log(event.currentTarget.dataset.postid)
+    const id = event.currentTarget.dataset.postid
     wx.navigateTo({
-      url: '/pages/post-detail/post-detail',
+      url: '/pages/post-detail/post-detail?id=' + id
     })
   },
   /**

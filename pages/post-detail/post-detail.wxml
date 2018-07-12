@@ -1,2 +1,21 @@
 <!--pages/post-detail/post-detail.wxml-->
-<text>pages/post-detail/post-detail.wxml</text>
+<view class='post-detail-container'>
+  <image class='head-image' src="{{postDetail.imgSrc}}"></image>
+  <view class='author-date'>
+    <image class='avatar' src="{{postDetail.avatar}}"></image>
+    <text class='author'>胡歌</text>
+    <text class='const-text'>发表于</text>
+    <text class='date'>三天前</text>
+  </view>
+  <text class='title'>{{postDetail.title}}</text>
+  <view class='tool'>
+    <view class='circle-img'>
+      <image wx:if="{{collected}}" catchtap="onCollect" src='/images/Star-on@2x.png'></image>
+      <image wx:else catchtap="onCollect" src='/images/Star-off@2x.png'></image>
+      <image class='share-img' src=''></image>
+    </view>
+    <!-- 水平直线  -->
+    <view class='horizon'></view>
+  </view>
+  <text class='detail'>{{postDetail.contont}}</text>
+</view>
