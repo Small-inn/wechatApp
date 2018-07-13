@@ -3,13 +3,21 @@
 .post-detail-container {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .head-image {
   width: 100%;
   height: 460rpx;
 }
-
+.music {
+  width: 34rpx;
+  height: 34rpx;
+  position: absolute;
+  left: 50%;
+  top: 230rpx;
+  margin-left: -17rpx;
+}
 .author-date {
   flex-direction: row;
   margin-left: 30rpx;

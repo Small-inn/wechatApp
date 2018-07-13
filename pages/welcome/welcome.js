@@ -4,8 +4,6 @@ Page({
    * 事件
    */
   onClickTap(e) {
-    console.log(e)
-
     wx.navigateTo({
       url: '../posts/post',
     })
