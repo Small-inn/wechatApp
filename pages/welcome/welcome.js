@@ -1,3 +1,4 @@
+var app = getApp();
 Page({
 
   /**
@@ -28,12 +29,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(app.globalData['userInfo']);
     let userInfo = {
       name: 'Small-inn',
       textWord: '开启小程序之旅',
-      img: '../../images/bg1.jpg'
+      img: ''
     }
-    this.setData({ userInfo })
+    this.setData({ userInfo})
   },
 
   /**
