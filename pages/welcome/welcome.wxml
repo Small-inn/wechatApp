@@ -1,6 +1,6 @@
 <view class="container">
   <block>
-  <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">获取用户信息</button>
+    <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">获取用户信息</button>
     <image class="user-avatar" src="{{avatarUrl}}"></image>
     <text class="user-name">{{userName}}</text>
   </block>

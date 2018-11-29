@@ -1,5 +1,5 @@
 .container {
-  background-color: #b3d4db
+  background-color: #b3d4db;
 }
 
 .user-avatar {
