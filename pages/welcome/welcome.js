@@ -8,10 +8,18 @@ Page({
       url: '../posts/post',
     })
   },
+  onGotUserInfo(e) {
+    console.log(e.detail.userInfo)
+    this.setData({
+      userName: e.detail.userInfo.nickName,
+      avatarUrl: e.detail.userInfo.avatarUrl
+    })
+  },
   /**
    * 页面的初始数据
    */
   data: {
+    // avatarUrl: ''
     // name: 'lx',
     // textWord: '开启小程序之旅'
   },
