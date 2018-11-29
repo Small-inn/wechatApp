@@ -1,4 +1,5 @@
 var app = getApp();
+console.log(app.globalData['userInfo']);
 Page({
 
   /**
@@ -29,7 +30,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(app.globalData['userInfo']);
     let userInfo = {
       name: 'Small-inn',
       textWord: '开启小程序之旅',
