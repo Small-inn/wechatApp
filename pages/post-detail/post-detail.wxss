@@ -11,12 +11,12 @@
   height: 460rpx;
 }
 .music {
-  width: 34rpx;
-  height: 34rpx;
+  width: 50rpx;
+  height: 50rpx;
   position: absolute;
   left: 50%;
   top: 230rpx;
-  margin-left: -17rpx;
+  margin-left: -25rpx;
 }
 .author-date {
   flex-direction: row;

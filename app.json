@@ -11,5 +11,8 @@
     "navigationBarBackgroundColor": "#b3d4db",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle":"black"
-  }
+  },
+  "requiredBackgroundModes": [
+    "audio"
+  ]
 }
