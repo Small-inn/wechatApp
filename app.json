@@ -1,18 +1,19 @@
 {
-  "pages":[
+  "pages": [
     "pages/welcome/welcome",
-    "pages/posts/post", 
+    "pages/posts/post",
     "pages/post-detail/post-detail",
     "pages/index/index",
     "pages/logs/logs"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#b3d4db",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "requiredBackgroundModes": [
     "audio"
-  ]
+  ],
+  "sitemapLocation": "sitemap.json"
 }
