@@ -7,9 +7,12 @@ Page({
   data: {
     text: '远方有狼，脚下有狗',
     imgUrls: [
-      '../../images/bg1.jpg',
-      '../../images/bg2.jpg',
-      '../../images/bg3.jpg'
+      '../../images/post/bl.png',
+      '../../images/post/cat.png',
+      '../../images/post/crab.png',
+      '../../images/post/sls.jpg',
+      '../../images/post/vr.png',
+      '../../images/post/xiaolong.jpg',
     ]
   },
 

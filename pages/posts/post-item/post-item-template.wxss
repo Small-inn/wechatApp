@@ -3,25 +3,32 @@
   flex-direction: column;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
-  margin-top: 20px;
+  margin-top: 20rpx;
   /* padding: 10px; */
-  margin-bottom: 20px;
+  margin-bottom: 40rpx;
+  padding-bottom: 10rpx;
 }
 .post-info {
-  margin-top: 5px;
+  /* margin-top: 10rpx; */
+  margin: 10rpx 0 20rpx 0rpx;
   width: 100%;
-  flex: row;
+  display: flex;
+  align-items: center;
 }
 .avatar {
   margin-left: 10px;
   width: 50rpx;
   height: 50rpx;
   border-radius: 50%;
-  vertical-align: middle;
+  /* vertical-align: middle; */
 }
 .time {
   margin-left: 10px;
   font-size: 24rpx;
+}
+.post-title {
+  margin-left: 20rpx;
+  line-height: 56rpx;
 }
 .post-image{
   margin-top: 10px;

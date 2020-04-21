@@ -2,7 +2,7 @@
   <block>
     <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">获取用户信息</button>
     <image class="user-avatar" src="{{avatarUrl}}"></image>
-    <text class="user-name">{{userName}}</text>
+    <text class="user-name">hello,{{userName}}</text>
   </block>
   <view class="moto-container">
     <text class="moto" bindtap="onClickTap">{{userInfo.textWord}}</text>

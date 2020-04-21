@@ -4,12 +4,13 @@
       <image class="avatar" src="{{avatar}}"></image>
       <text class="time">{{date}}</text>
     </view>
+    <text class="post-title">{{title}}</text>
     <image class="post-image" src="{{imgSrc}}"></image>
     <text class="post-graph">{{contont}}</text>
     <view class="post-like">
-      <!-- <image class="visit" src=""></image> -->
+      <image class="visit" src="/images/icon/chat.png"></image>
       <text class="visit-count">{{reading}}</text>
-      <!-- <image class="love" src=""></image> -->
+      <image class="love" src="/images/icon/view.png"></image>
       <text class="love-count">{{collection}}</text>
     </view>
   </view>
