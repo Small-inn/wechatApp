@@ -1,7 +1,7 @@
 import postData from '../../data/data.js'
-const backgroundAudioManager = wx.getBackgroundAudioManager() 
+const backgroundAudioManager = wx.getBackgroundAudioManager()
+var app = getApp()
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -18,12 +18,17 @@ Page({
     // 利用data缓存id
     this.data.currentPostId = id
     // 获取数据
-    this.setData({ postDetail: postData[id] })
+    this.setData({
+      // postDetail: postData[id]
+      postDetail: postData.filter(item => item.postId == id)[0]
+    })
     // 获取缓存值
     var postCollectedObj = wx.getStorageSync('post_collected')
     if (postCollectedObj) {
       var postCollected = postCollectedObj[id]
-      this.setData({ collected: postCollected })
+      this.setData({
+        collected: postCollected || false
+      })
     } else {
       var postCollectedObj = {}
       postCollectedObj[id] = false
@@ -40,13 +45,17 @@ Page({
   },
   // 收藏实现
   onCollect: function (event) {
-    console.log(this.currentPostId)
     var postCollectedObj = wx.getStorageSync('post_collected')
-    var postCollected = postCollectedObj[this.currentPostId]
+    console.log(postCollectedObj)
+    var postCollected = postCollectedObj[this.data.currentPostId]
     // 取反操作
     postCollected = !postCollected
-    postCollectedObj[this.currentPostId] = postCollected
+    postCollectedObj[this.data.currentPostId] = postCollected
     this.showToast(postCollectedObj, postCollected)
+  },
+  onShare: function () {
+    // wx.clearStorageSync()
+    this.showActSheet()
   },
   showToast: function (postCollectedObj, postCollected) {
     // 更新文章的缓存值
@@ -59,28 +68,61 @@ Page({
       title: postCollected ? '收藏成功' : '取消成功'
     })
   },
-
+  showActSheet: function () {
+    wx.showActionSheet({
+      itemList: ['朋友', '朋友圈', 'QQ', '微博']
+    })
+  },
 
   // 音乐播放实现
   onMusicTap: function (e) {
-    console.log(postData)
     const currentId = this.data.currentPostId
-    console.log(backgroundAudioManager)
-    // this.data.backgroundAudioManager.title = postData[currentId].musicTitle
-    backgroundAudioManager.title = '此时此刻'
-    backgroundAudioManager.epname = '此时此刻'
-    backgroundAudioManager.singer = '许巍'
-    backgroundAudioManager.coverImgUrl = 'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000'
-    backgroundAudioManager.src = 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46'
-    // backgroundAudioManager.src = postData[currentId].musicUrl
+    const musicDetail = postData[currentId].music
+    // 1.0
+    // if (this.data.isPlay) {
+    //   wx.pauseBackgroundAudio()
+    //   this.setData({isPlay: false})
+    // } else {
+    //   wx.playBackgroundAudio({
+    //     dataUrl: musicDetail.url,
+    //     title: musicDetail.title,
+    //     coverImgUrl: musicDetail.coverImgUrl
+    //   })
+    //   this.setData({isPlay: true})
+    // }
+    // 2.0
+    // console.log(musicDetail)
+    backgroundAudioManager.title = musicDetail.title
+    backgroundAudioManager.epname = musicDetail.title
+    backgroundAudioManager.singer = musicDetail.title.split('-')[1]
+    backgroundAudioManager.coverImgUrl = musicDetail.coverImgUrl
+    backgroundAudioManager.src = musicDetail.url
+    // 本地版
+    // backgroundAudioManager.title = '此时此刻'
+    // backgroundAudioManager.epname = '此时此刻'
+    // backgroundAudioManager.singer = '许巍'
+    // backgroundAudioManager.coverImgUrl = 'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000'
+    // backgroundAudioManager.src = 'https://cntaipingapp.oss-cn-hangzhou.aliyuncs.com/lxjk/ShoppingMall/activityManage/ilovechina.mp3'
+
     if (this.data.isPlay) {
-      // backgroundAudioManager.pause()
-      this.setData({ isPlay: false })
-      // this.data.isPlay = false
+      backgroundAudioManager.pause()
+      this.setData({
+        isPlay: false
+      })
     } else {
       backgroundAudioManager.play()
-      this.setData({ isPlay: true })
-      // this.data.isPlay = true
+      this.setData({
+        isPlay: true
+      })
     }
+  },
+  // 音乐播放暂停监听
+  addEvtLis: function () {
+    backgroundAudioManager.onPlay(() => {
+      this.setData({isPlay: true})
+    })
+    backgroundAudioManager.onPause(() => {
+      this.setData({isPlay: false})
+    })
   }
 })

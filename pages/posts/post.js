@@ -1,4 +1,4 @@
-import postData from '../../data/data.js'
+import postData  from '../../data/data.js'
 Page({
 
   /**
@@ -7,12 +7,9 @@ Page({
   data: {
     text: '远方有狼，脚下有狗',
     imgUrls: [
-      '../../images/post/bl.png',
-      '../../images/post/cat.png',
-      '../../images/post/crab.png',
-      '../../images/post/sls.jpg',
-      '../../images/post/vr.png',
-      '../../images/post/xiaolong.jpg',
+      '../../images/iqiyi.png',
+      '../../images/vr.png',
+      '../../images/wx.png'
     ]
   },
 
@@ -23,10 +20,11 @@ Page({
     /**
      * 在onload方法中，不是异步的去执行一个数据绑定，则不需要使用this.setData,this.setData()是同步方法 
      */ 
-    this.setData({post_content: postData})
+    this.setData({postData})
   },
 
   onPostTap: function(event) {
+    // data- 转换成驼峰命名，转换成小写， data-postId ==> dataset.postid
     const id = event.currentTarget.dataset.postid
     wx.navigateTo({
       url: '/pages/post-detail/post-detail?id=' + id

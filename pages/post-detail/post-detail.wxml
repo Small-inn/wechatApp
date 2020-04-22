@@ -1,7 +1,9 @@
-<!--pages/post-detail/post-detail.wxml-->
+<!-- pages/post-detail/post-detail.wxml -->
 <view class='post-detail-container'>
-  <image class='head-image' src="{{postDetail.imgSrc}}"></image>
-  <image class='music' catchtap='onMusicTap' src="{{isPlay ? '/images/music/music-stop.png' : '/images/music/music-start.png'}}"></image>
+  <view class="img-wrapper">
+    <image class='head-image' src="{{isPlay ? postDetail.music.coverImg : postDetail.imgSrc}}"></image>
+    <image class='music' catchtap='onMusicTap' src="{{isPlay ? '/images/music/music-stop.png' : '/images/music/music-start.png'}}"></image>
+  </view>
   <view class='author-date'>
     <image class='avatar' src="{{postDetail.avatar}}"></image>
     <text class='author'>胡歌</text>
@@ -11,11 +13,12 @@
   <text class='title'>{{postDetail.title}}</text>
   <view class='tool'>
     <view class='circle-img'>
-      <image wx:if="{{collected}}" catchtap="onCollect" src='/images/icon/star.png'></image>
-      <image wx:else catchtap="onCollect" src='/images/icon/none-star.png'></image>
-      <image class='share-img' src=''></image>
+      <image wx:if="{{collected}}" catchtap="onCollect" class='share-img' src="/images/icon/collection.png"></image>
+      <image wx:else catchtap="onCollect" src="/images/icon/collection-anti.png"></image>
+      <image wx:if="{{collected}}" catchtap="onShare" class='collect-img' src='/images/icon/share.png'></image>
+      <image wx:else catchtap="onShare" src='/images/icon/share.png'></image>
     </view>
-    <!-- 水平直线  -->
+    <!-- 水平直线 -->
     <view class='horizon'></view>
   </view>
   <text class='detail'>{{postDetail.contont}}</text>

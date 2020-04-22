@@ -6,14 +6,14 @@ Page({
    * 事件
    */
   onClickTap(e) {
-    wx.navigateTo({
-      url: '../posts/post',
-    });
+    // 执行onHide生命周期
+    // wx.navigateTo({
+    //   url: '../posts/post',
+    // });
     // 不存在子父页面的关系，到下一个页面之前的页面会被销毁，执行前一个页面的Unload事件
-    // wx.redirectTo({
-    //   url: '',
-    // })
-
+    wx.redirectTo({
+      url: '../posts/post',
+    })
   },
   onGotUserInfo(e) {
     console.log(e.detail.userInfo)

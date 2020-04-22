@@ -10,7 +10,7 @@
   <!-- 微信只是实现模板化，并没有实现组件化，所以在模板下是不能写业务逻辑的  -->
   <!-- 模板传递数据是通过data进行传输的  -->
   <!-- <template is="postItem" data="{{text}}" /> -->
-  <block wx:for="{{post_content}}" wx:for-item="item" wx:key="*this">
+  <block wx:for="{{postData}}" wx:for-item="item" wx:key="*this">
     <!-- template  -->
     <view catchtap="onPostTap" data-postId="{{item.postId}}">
       <template is="postItem" data="{{...item}}" />
