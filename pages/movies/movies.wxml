@@ -1,7 +1,7 @@
-<!-- <import src="./movie-list/movie-list-tmpl.wxml" /> -->
+<import src="./movie-list/movie-list-tmpl.wxml" />
 <view class="movies">
-    <text>movies</text>    
-    <!-- <template is="movieListTmpl"></template>
+    <!-- <text>movies</text> -->
     <template is="movieListTmpl"></template>
-    <template is="movieListTmpl"></template> -->
+    <template is="movieListTmpl"></template>
+    <template is="movieListTmpl"></template>
 </view>
