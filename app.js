@@ -36,6 +36,14 @@ App({
   },
   globalData: {
     userInfo: null,
-    g_isMusicPlay: false
+    g_isMusicPlay: false,
+    g_playPostId: null
   }
 })
+
+// tabBar设置：
+// "iconPath": "/images/tab/yuedu.png",
+// "selectedIconPath": "/images/tab/yuedu_hl.png"
+
+// "iconPath": "/images/tab/dianying.png",
+// "selectedIconPath": "/images/tab/dianying_hl.png"

@@ -1,5 +1,7 @@
 var app = getApp();
 console.log(app.globalData['userInfo']);
+// 在app.json中的pages配置一下内容显示此页面：
+// "pages/welcome/welcome",
 Page({
 
   /**
@@ -11,8 +13,11 @@ Page({
     //   url: '../posts/post',
     // });
     // 不存在子父页面的关系，到下一个页面之前的页面会被销毁，执行前一个页面的Unload事件
-    wx.redirectTo({
-      url: '../posts/post',
+    // wx.navigateTo({
+    //   url: '../posts/post',
+    // })
+    wx.switchTab({
+      url: '/pages/posts/post',
     })
   },
   onGotUserInfo(e) {
@@ -26,6 +31,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userName: 'Small-inn',
     // avatarUrl: ''
     // name: 'lx',
     // textWord: '开启小程序之旅'

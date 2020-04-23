@@ -1,0 +1,12 @@
+<template name="starTmpl">
+    <view class="stars-container">
+        <view class="stars">
+            <image src="/images/icon/star.png"></image>
+            <image src="/images/icon/star.png"></image>
+            <image src="/images/icon/star.png"></image>
+            <image src="/images/icon/star.png"></image>
+            <image src="/images/icon/star.png"></image>
+        </view>
+        <text class="star-score">8.6</text>
+    </view>
+</template>

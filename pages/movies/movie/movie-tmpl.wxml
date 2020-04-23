@@ -1,0 +1,8 @@
+<import src="../stars/stars-tmpl.wxml" />
+<template name="movieTmpl">
+    <view>
+        <image></image>
+        <text></text>
+        <template is="starTmpl"></template>
+    </view>
+</template>

@@ -18,4 +18,12 @@ wx samll progame
 9. 列表渲染
 10. Template模板使用
 
+#### 事件冒泡与阻止冒泡
+> bindTap&&catchTap
+
+### 路由API
+* redirectTo (与navigateTo区别是page生命周期onUnload)
+* navigateTo (onHide)
+* switchTab (专属Tab栏)
+
 

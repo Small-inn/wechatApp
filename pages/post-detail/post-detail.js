@@ -34,14 +34,13 @@ Page({
       postCollectedObj[id] = false
       wx.setStorageSync('post_collected', postCollectedObj)
     }
+    if (app.globalData.g_isMusicPlay && app.globalData.g_playPostId === id) {
+      this.setData({
+        isPlay: true
+      })
+    }
     // 监听音乐播放与暂停
-    // this.setData({ backgroundAudioManager: wx.getBackgroundAudioManager() })
-    // this.data.backgroundAudioManager.onPause(() => {
-    //   console.log('暂停')
-    // })
-    // this.data.backgroundAudioManager.onPlay(() => {
-    //   console.log('播放')
-    // })
+    this.addEvtLis()
   },
   // 收藏实现
   onCollect: function (event) {
@@ -54,7 +53,6 @@ Page({
     this.showToast(postCollectedObj, postCollected)
   },
   onShare: function () {
-    // wx.clearStorageSync()
     this.showActSheet()
   },
   showToast: function (postCollectedObj, postCollected) {
@@ -97,13 +95,6 @@ Page({
     backgroundAudioManager.singer = musicDetail.title.split('-')[1]
     backgroundAudioManager.coverImgUrl = musicDetail.coverImgUrl
     backgroundAudioManager.src = musicDetail.url
-    // 本地版
-    // backgroundAudioManager.title = '此时此刻'
-    // backgroundAudioManager.epname = '此时此刻'
-    // backgroundAudioManager.singer = '许巍'
-    // backgroundAudioManager.coverImgUrl = 'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000'
-    // backgroundAudioManager.src = 'https://cntaipingapp.oss-cn-hangzhou.aliyuncs.com/lxjk/ShoppingMall/activityManage/ilovechina.mp3'
-
     if (this.data.isPlay) {
       backgroundAudioManager.pause()
       this.setData({
@@ -115,14 +106,23 @@ Page({
         isPlay: true
       })
     }
+    // this.addEvtLis()
   },
-  // 音乐播放暂停监听
+  // 音乐播放暂停监听,点击播放和总控开关触发此函数
   addEvtLis: function () {
     backgroundAudioManager.onPlay(() => {
-      this.setData({isPlay: true})
+      this.setData({
+        isPlay: true
+      })
+      app.globalData.g_isMusicPlay = true
+      app.globalData.g_playPostId = this.data.currentPostId
     })
     backgroundAudioManager.onPause(() => {
-      this.setData({isPlay: false})
+      this.setData({
+        isPlay: false
+      })
+      app.globalData.g_isMusicPlay = false
+      app.globalData.g_playPostId = null
     })
   }
 })

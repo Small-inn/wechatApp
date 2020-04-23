@@ -7,9 +7,18 @@ Page({
   data: {
     text: '远方有狼，脚下有狗',
     imgUrls: [
-      '../../images/iqiyi.png',
-      '../../images/vr.png',
-      '../../images/wx.png'
+      {
+        url: '../../images/iqiyi.png',
+        id: 0
+      },
+      {
+        url: '../../images/vr.png',
+        id: 1
+      },
+      {
+        url: '../../images/wx.png',
+        id: 2
+      }
     ]
   },
 
@@ -22,7 +31,19 @@ Page({
      */ 
     this.setData({postData})
   },
-
+  // 轮播跳转详情
+  onSwiperTap: function(event) {
+    // target 和 currttarget
+    // target指的是当前点击的组件和currentTarget指的是时间捕获的组件
+    // target这里指的是image，而currentTarget指的是swiper
+    console.log(event.target)
+    console.log(event.currentTarget)
+    const id = event.target.dataset.swiperid
+    wx.navigateTo({
+      url: '/pages/post-detail/post-detail?id=' + id
+    })
+  },
+  // 跳转文章详情
   onPostTap: function(event) {
     // data- 转换成驼峰命名，转换成小写， data-postId ==> dataset.postid
     const id = event.currentTarget.dataset.postid
