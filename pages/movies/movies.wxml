@@ -1,7 +1,9 @@
 <import src="./movie-list/movie-list-tmpl.wxml" />
 <view class="movies">
     <!-- <text>movies</text> -->
-    <template is="movieListTmpl"></template>
-    <template is="movieListTmpl"></template>
-    <template is="movieListTmpl"></template>
+    <view wx:for="{{3}}" wx:key="*this" class="movies-tmpl">
+        <template is="movieListTmpl"></template>
+        <!-- <template is="movieListTmpl"></template>
+    <template is="movieListTmpl"></template> -->
+    </view>
 </view>

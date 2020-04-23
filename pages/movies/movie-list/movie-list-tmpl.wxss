@@ -7,6 +7,7 @@
 }
 
 .movie-head {
+    margin-right: 20rpx;
     padding: 30rpx 20rpx 22rpx;
     display: flex;
     flex-direction: row;
@@ -18,9 +19,9 @@
     font-size: 24rpx;
 }
 
-.more {
+/* .more {
     float: right;
-}
+} */
 
 .more-text {
     font-size: 28rpx;
