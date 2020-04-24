@@ -20,12 +20,13 @@ wx samll progame
 10. Template模板使用
 
 #### 事件冒泡与阻止冒泡
-> bindTap&&catchTap
+> bindtap&&catchtap
 
 ### 路由API
 * redirectTo (与navigateTo区别是page生命周期onUnload)
 * navigateTo (onHide)
 * switchTab (专属Tab栏)
+* getCurrentPages() 获取当前路由栈的内容
 
 ### RESTFul API JSON
 

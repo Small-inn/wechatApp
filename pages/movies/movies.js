@@ -1,4 +1,3 @@
-// const App = require('../../app')
 const app = getApp()
 import { convertToArray } from '../../utils/util'
 const top250Url = `${app.globalData.baseUrl}/v2/movie/top250?start=0&count=3`
@@ -41,7 +40,8 @@ Page({
             },
         })
     },
-    processData: function (movieData, seekKey, descript) {
+    // 数据处理
+    processData(movieData, seekKey, descript) {
         let tempList = []
         for (let i in movieData.subjects) {
             let subject = movieData.subjects[i]
@@ -63,6 +63,14 @@ Page({
         }
         this.setData(readyData)
         console.log(this.data.top250)
+    },
+    // 点击更多电影
+    onMoreTap(e) {
+        console.log(e.currentTarget.dataset.category)
+        const category = e.currentTarget.dataset.category
+        wx.navigateTo({
+            url: '/pages/more-movie/more-movie?category=' + category
+        })
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

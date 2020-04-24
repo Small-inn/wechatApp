@@ -34,7 +34,7 @@ Page({
   // 轮播跳转详情
   onSwiperTap: function(event) {
     // target 和 currttarget
-    // target指的是当前点击的组件和currentTarget指的是时间捕获的组件
+    // target指的是当前点击的组件和currentTarget指的是事件捕获的组件
     // target这里指的是image，而currentTarget指的是swiper
     console.log(event.target)
     console.log(event.currentTarget)

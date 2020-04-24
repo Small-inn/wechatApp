@@ -27,7 +27,24 @@ const convertToArray = stars => {
   return arr
 }
 
+// 请求数据接口
+const http = (url, callback) => {
+  wx.request({
+      url: url,
+      data: {},
+      method: 'GET',
+      // header: {},
+      success: function (res) {
+          callback(res.data)
+      },
+      fail: function (err) {
+          console.log(err)
+      },
+  })
+}
+
 module.exports = {
   formatTime: formatTime,
-  convertToArray
+  convertToArray,
+  http
 }
