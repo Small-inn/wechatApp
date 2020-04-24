@@ -11,7 +11,8 @@ Page({
    */
   data: {
     category: '',
-    dataUrl: ''
+    dataUrl: '',
+    moviesData: {}
   },
 
   /**
@@ -40,6 +41,7 @@ Page({
   },
   // 数据处理
   getData(data) {
+    console.log(data)
     let tempList = []
     for (let i in data.subjects) {
       const subject = data.subjects[i]
@@ -53,6 +55,9 @@ Page({
       }
       tempList.push(tempObj)
     }
+    this.setData({
+      moviesData: tempList
+    })
 
   },
   /**
