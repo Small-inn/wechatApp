@@ -14,6 +14,20 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const convertToArray = stars => {
+  let num = Math.floor(stars / 10 * 2 / 2)
+  let arr = []
+  for (let i = 0; i < 5; i++) {
+    if (i < num) {
+      arr.push(1)
+    } else {
+      arr.push(0)
+    }
+  }
+  return arr
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  convertToArray
 }

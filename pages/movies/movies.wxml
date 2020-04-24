@@ -1,9 +1,14 @@
 <import src="./movie-list/movie-list-tmpl.wxml" />
 <view class="movies">
-    <!-- <text>movies</text> -->
-    <view wx:for="{{3}}" wx:key="*this" class="movies-tmpl">
-        <template is="movieListTmpl"></template>
-        <!-- <template is="movieListTmpl"></template>
-    <template is="movieListTmpl"></template> -->
+    <view class="movies-tmpl">
+        <!-- <block wx:for="{{3}}" wx:key="*this"> -->
+        <template is="movieListTmpl" data="{{...top250}}"></template>
+        <!-- </block> -->
+    </view>
+    <view class="movies-tmpl">
+        <template is="movieListTmpl" data="{{...inTheaters}}"></template>
+    </view>
+    <view class="movies-tmpl">
+        <template is="movieListTmpl" data="{{...comingSoon}}"></template>
     </view>
 </view>
