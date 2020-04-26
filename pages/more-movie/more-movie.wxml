@@ -1,5 +1,5 @@
 <!-- pages/more-movie.wxml -->
-<import src="../movies/movie-list/movie-list.wxml" />
+<import src="../movies/movie-list/movie-list-tmpl.wxml" />
 <!-- <text>pages/more-movie.wxml{{category}}</text> -->
 <view class="more-movie">
     <!-- <block wx:for="{{5}}"> -->
