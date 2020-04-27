@@ -5,6 +5,7 @@
     "pages/post-detail/post-detail",
     "pages/index/index",
     "pages/logs/logs",
+    "pages/welcome/welcome",
     "pages/more-movie/more-movie"
   ],
   "window": {

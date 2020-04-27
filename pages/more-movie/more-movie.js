@@ -5,14 +5,17 @@ const top250Url = `${app.globalData.baseUrl}/v2/movie/top250`
 const inTheatersUrl = `${app.globalData.baseUrl}/v2/movie/in_theaters`
 const comingSoonUrl = `${app.globalData.baseUrl}/v2/movie/coming_soon`
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     category: '',
     dataUrl: '',
-    moviesData: {}
+    moviesData: {},
+    storeList: [],
+    requestUrl: '',
+    totalCount: 0,
+    isEmpty: false,
   },
 
   /**
@@ -21,10 +24,10 @@ Page({
   onLoad: function (options) {
     const category = options.category
     this.setData({
-      category: category
+      category: category,
     })
     wx.setNavigationBarTitle({
-      title: this.data.category
+      title: this.data.category,
     })
     switch (category) {
       case '豆瓣Top250':
@@ -41,71 +44,94 @@ Page({
   },
   // 数据处理
   getData(data) {
-    console.log(data)
     let tempList = []
+    // let count = data.count
     for (let i in data.subjects) {
       const subject = data.subjects[i]
-      let title = subject.title.length > 6 ? `${subject.title.slice(0, 6)}...` : subject.title
+      let title =
+        subject.title.length > 6
+          ? `${subject.title.slice(0, 6)}...`
+          : subject.title
       let tempObj = {
         title,
         stars: convertToArray(subject.rating.stars),
         average: subject.rating.average,
         coverageUrl: subject.images.large,
-        movieId: subject.id
+        movieId: subject.id,
       }
       tempList.push(tempObj)
     }
-    this.setData({
-      moviesData: tempList
-    })
+    // if (tempList.length === 20) {
+      
+    // }
 
+    // 1.0
+    let totalList = (this.data.storeList = this.data.storeList.concat(tempList))
+    // 2.0
+    // let totalList = []
+    // if (!this.data.isEmpty) {
+    // 非首次加载
+    //   totalList = this.data.moviesData.concat(tempList)
+    // } else {
+    //   // 首次加载
+    //   totalList = tempList
+    //   this.data.isEmpty = true
+    // }
+
+    this.setData({
+      moviesData: totalList,
+    })
+    wx.hideNavigationBarLoading()
+    wx.stopPullDownRefresh()
+    this.data.totalCount += 20
+  },
+  // 上拉加载
+  onScrollTolower: function (e) {
+    console.log('加载更多')
+    wx.showNavigationBarLoading()
+    const requestUrl =
+      this.data.dataUrl + '?start=' + this.data.totalCount + '&count=20'
+    http(requestUrl, this.getData)
+  },
+  // 下拉刷新
+  onPullDownRefresh: function(e) {
+    console.log('下拉刷新')
+    this.data.moviesData = {}
+    wx.showNavigationBarLoading()
+    http(this.data.dataUrl, this.getData)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
-  },
+  onReady: function () {},
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
-  },
+  onShow: function () {},
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-
-  },
+  onHide: function () {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-
-  },
+  onUnload: function () {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-
-  },
+  onPullDownRefresh: function () {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-
-  },
+  onReachBottom: function () {},
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
-  }
+  onShareAppMessage: function () {},
 })
