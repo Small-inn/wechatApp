@@ -5,8 +5,7 @@
     "pages/post-detail/post-detail",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/more-movie/more-movie",
-    "pages/movie-gird/movie-gird"
+    "pages/more-movie/more-movie"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -19,8 +18,7 @@
   ],
   "tabBar": {
     "borderStyle": "white",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/movies/movies",
         "text": "电影",
         "iconPath": "/images/tab/dianying.png",

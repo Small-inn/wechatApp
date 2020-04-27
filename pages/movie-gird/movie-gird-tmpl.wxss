@@ -1,0 +1,13 @@
+@import "../movies/movie/movie-tmpl.wxss";
+
+.grid-container {
+    /* display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; */
+    margin: 40rpx 0 40rpx 6rpx;
+}
+
+.single-movie {
+    float: left;
+    margin-bottom: 40rpx;
+}

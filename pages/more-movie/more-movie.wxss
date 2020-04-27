@@ -1,1 +1,7 @@
-/* pages/more-movie.wxss */
+@import '../movie-gird/movie-gird-tmpl.wxss';
+
+.more-movie {
+    /* display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; */
+}
