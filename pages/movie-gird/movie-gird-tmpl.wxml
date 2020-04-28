@@ -1,7 +1,7 @@
 <import src='../movies/movie/movie-tmpl.wxml' />
 <template name="movieGridTmpl">
     <scroll-view class="grid-container" scroll-x="{{true}}" scroll-y="{{true}}" bindscrolltolower="onScrollTolower">
-        <block wx:for="{{moviesData}}" wx:for-item="movie">
+        <block wx:for="{{moviesData}}" wx:for-item="movie" wx:key="*this">
             <view class="single-movie">
                 <template is="movieTmpl" data="{{...movie}}"></template>
             </view>

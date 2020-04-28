@@ -43,7 +43,7 @@ Page({
     this.addEvtLis()
   },
   // 收藏实现
-  onCollect: function (event) {
+  onCollect(event) {
     var postCollectedObj = wx.getStorageSync('post_collected')
     console.log(postCollectedObj)
     var postCollected = postCollectedObj[this.data.currentPostId]
@@ -52,10 +52,10 @@ Page({
     postCollectedObj[this.data.currentPostId] = postCollected
     this.showToast(postCollectedObj, postCollected)
   },
-  onShare: function () {
+  onShare() {
     this.showActSheet()
   },
-  showToast: function (postCollectedObj, postCollected) {
+  showToast(postCollectedObj, postCollected) {
     // 更新文章的缓存值
     wx.setStorageSync('post_collected', postCollectedObj)
     this.setData({
@@ -66,63 +66,103 @@ Page({
       title: postCollected ? '收藏成功' : '取消成功'
     })
   },
-  showActSheet: function () {
+  showActSheet() {
     wx.showActionSheet({
       itemList: ['朋友', '朋友圈', 'QQ', '微博']
     })
   },
 
   // 音乐播放实现
-  onMusicTap: function (e) {
+  onMusicTap(e) {
     const currentId = this.data.currentPostId
     const musicDetail = postData[currentId].music
+    const isPlay = this.data.isPlay
     // 1.0
-    // if (this.data.isPlay) {
-    //   wx.pauseBackgroundAudio()
-    //   this.setData({isPlay: false})
-    // } else {
-    //   wx.playBackgroundAudio({
-    //     dataUrl: musicDetail.url,
-    //     title: musicDetail.title,
-    //     coverImgUrl: musicDetail.coverImgUrl
-    //   })
-    //   this.setData({isPlay: true})
-    // }
-    // 2.0
-    // console.log(musicDetail)
-    backgroundAudioManager.title = musicDetail.title
-    backgroundAudioManager.epname = musicDetail.title
-    backgroundAudioManager.singer = musicDetail.title.split('-')[1]
-    backgroundAudioManager.coverImgUrl = musicDetail.coverImgUrl
-    backgroundAudioManager.src = musicDetail.url
-    if (this.data.isPlay) {
-      backgroundAudioManager.pause()
-      this.setData({
-        isPlay: false
-      })
-    } else {
-      backgroundAudioManager.play()
-      this.setData({
-        isPlay: true
-      })
-    }
-    // this.addEvtLis()
-  },
-  // 音乐播放暂停监听,点击播放和总控开关触发此函数
-  addEvtLis: function () {
-    backgroundAudioManager.onPlay(() => {
-      this.setData({
-        isPlay: true
-      })
-      app.globalData.g_isMusicPlay = true
-      app.globalData.g_playPostId = this.data.currentPostId
-    })
-    backgroundAudioManager.onPause(() => {
+    if (isPlay) {
+      wx.pauseBackgroundAudio()
       this.setData({
         isPlay: false
       })
       app.globalData.g_isMusicPlay = false
-      app.globalData.g_playPostId = null
+    } else {
+      wx.playBackgroundAudio({
+        dataUrl: musicDetail.url,
+        title: musicDetail.title,
+        coverImgUrl: musicDetail.coverImgUrl
+      })
+      this.setData({
+        isPlay: true
+      })
+      app.globalData.g_playPostId = currentId
+      app.globalData.g_isMusicPlay = true
+    }
+    // 2.0
+    // console.log(musicDetail)
+    // backgroundAudioManager.title = musicDetail.title
+    // backgroundAudioManager.epname = musicDetail.title
+    // backgroundAudioManager.singer = musicDetail.title.split('-')[1]
+    // backgroundAudioManager.coverImgUrl = musicDetail.coverImgUrl
+    // backgroundAudioManager.src = musicDetail.url
+    // if (this.data.isPlay) {
+    //   backgroundAudioManager.pause()
+    //   this.setData({
+    //     isPlay: false
+    //   })
+    // } else {
+    //   backgroundAudioManager.play()
+    //   this.setData({
+    //     isPlay: true
+    //   })
+    // }
+    // this.addEvtLis()
+  },
+  // 音乐播放暂停监听,点击播放和总控开关触发此函数
+  addEvtLis() {
+    // 1.0
+    wx.onBackgroundAudioPlay(() => {
+      let pages = getCurrentPages()
+      let currentPage = pages[pages.length - 1]
+      if (currentPage.data.currentPostId === this.data.currentPostId) {
+        if (app.globalData.g_playPostId == this.data.currentPostId) {
+          this.setData({
+            isPlay: true
+          })
+        }
+      }
+      app.globalData.g_isMusicPlay = true
     })
+    wx.onBackgroundAudioPause(() => {
+      let pages = getCurrentPages()
+      let currentPage = pages[pages.length - 1]
+      if (currentPage.data.currentPostId === this.data.currentPostId) {
+        if (app.globalData.g_playPostId == this.data.currentPostId) {
+          this.setData({
+            isPlay: false
+          })
+        }
+      }
+      app.globalData.g_isMusicPlay = false
+    })
+    wx.onBackgroundAudioStop(() => {
+      this.setData({
+        isPlay: false
+      })
+    })
+    app.globalData.g_isMusicPlay = false
+    // 2.0
+    // backgroundAudioManager.onPlay(() => {
+    //   this.setData({
+    //     isPlay: true
+    //   })
+    //   app.globalData.g_isMusicPlay = true
+    //   app.globalData.g_playPostId = this.data.currentPostId
+    // })
+    // backgroundAudioManager.onPause(() => {
+    //   this.setData({
+    //     isPlay: false
+    //   })
+    //   app.globalData.g_isMusicPlay = false
+    //   app.globalData.g_playPostId = null
+    // })
   }
 })

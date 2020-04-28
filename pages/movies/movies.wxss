@@ -1,4 +1,37 @@
 @import "./movie-list/movie-list-tmpl.wxss";
+@import "../movie-gird/movie-gird-tmpl.wxss";
+
+.search {
+    margin: 20rpx 20rpx 0;
+    border-radius: 40rpx;
+    /* width: 100%; */
+    height: 80rpx;
+    background-color: #f2f2f2;
+    display: flex;
+    align-items: center;
+}
+
+.search-img {
+    margin: auto 28rpx;
+}
+
+.search input {
+    height: 100%;
+    width: 600rpx;
+    font-size: 28rpx;
+}
+
+.placeholder {
+    font-size: 14px;
+    color: #d1d1d1;
+    margin-left: 20rpx;
+}
+
+.xx-img {
+    height: 26rpx;
+    width: 26rpx;
+    margin: auto 30rpx;
+}
 
 .movies {
     background-color: #f2f2f2;
@@ -6,4 +39,9 @@
 
 .movies-tmpl {
     margin-bottom: 30rpx;
+}
+
+.search-pannel {
+    position: absolute;
+    top: 120rpx;
 }

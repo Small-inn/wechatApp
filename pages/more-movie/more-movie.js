@@ -1,6 +1,9 @@
 // pages/more-movie.js
 const app = getApp()
-import { convertToArray, http } from '../../utils/util'
+import {
+  convertToArray,
+  http
+} from '../../utils/util'
 const top250Url = `${app.globalData.baseUrl}/v2/movie/top250`
 const inTheatersUrl = `${app.globalData.baseUrl}/v2/movie/in_theaters`
 const comingSoonUrl = `${app.globalData.baseUrl}/v2/movie/coming_soon`
@@ -49,9 +52,9 @@ Page({
     for (let i in data.subjects) {
       const subject = data.subjects[i]
       let title =
-        subject.title.length > 6
-          ? `${subject.title.slice(0, 6)}...`
-          : subject.title
+        subject.title.length > 6 ?
+        `${subject.title.slice(0, 6)}...` :
+        subject.title
       let tempObj = {
         title,
         stars: convertToArray(subject.rating.stars),
@@ -62,7 +65,7 @@ Page({
       tempList.push(tempObj)
     }
     // if (tempList.length === 20) {
-      
+
     // }
 
     // 1.0
@@ -85,7 +88,7 @@ Page({
     wx.stopPullDownRefresh()
     this.data.totalCount += 20
   },
-  // 上拉加载
+  // 1.0 上拉加载， 配合scroll-view
   onScrollTolower: function (e) {
     console.log('加载更多')
     wx.showNavigationBarLoading()
@@ -93,9 +96,18 @@ Page({
       this.data.dataUrl + '?start=' + this.data.totalCount + '&count=20'
     http(requestUrl, this.getData)
   },
+  // 2.0 上拉加载
+  // onReachBottom: function (e) {
+  //   console.log('加载更多')
+  //   wx.showNavigationBarLoading()
+  //   const requestUrl =
+  //     this.data.dataUrl + '?start=' + this.data.totalCount + '&count=20'
+  //   http(requestUrl, this.getData)
+  // },
   // 下拉刷新
-  onPullDownRefresh: function(e) {
+  onPullDownRefresh: function (e) {
     console.log('下拉刷新')
+    // wx.startPullDownRefresh()
     this.data.moviesData = {}
     wx.showNavigationBarLoading()
     http(this.data.dataUrl, this.getData)

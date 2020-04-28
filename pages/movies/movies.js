@@ -1,8 +1,11 @@
 const app = getApp()
-import { convertToArray } from '../../utils/util'
+import {
+    convertToArray
+} from '../../utils/util'
 const top250Url = `${app.globalData.baseUrl}/v2/movie/top250?start=0&count=3`
 const inTheatersUrl = `${app.globalData.baseUrl}/v2/movie/in_theaters?start=0&count=3`
 const comingSoonUrl = `${app.globalData.baseUrl}/v2/movie/coming_soon?start=0&count=3`
+const searchUrl = `${app.globalData.baseUrl}//v2/movie/search`
 Page({
 
     /**
@@ -11,7 +14,10 @@ Page({
     data: {
         top250: {},
         inTheaters: {},
-        comingSoon: {}
+        comingSoon: {},
+        searchShow: false,
+        inputText: '',
+        searchResult: {}
     },
 
     /**
@@ -56,13 +62,14 @@ Page({
             }
             tempList.push(tempObj)
         }
+        // 技巧
         let readyData = {}
         readyData[seekKey] = {
             categoryTitle: descript,
-            movies: tempList
+            moviesData: tempList
         }
         this.setData(readyData)
-        console.log(this.data.top250)
+        console.log(this.data.searchResult)
     },
     // 点击更多电影
     onMoreTap(e) {
@@ -72,18 +79,60 @@ Page({
             url: '/pages/more-movie/more-movie?category=' + category
         })
     },
+    // 跳转详情页
+    onMovieTap(e) {
+        console.log(e)
+        console.log(e.currentTarget.dataset.movieid)
+        wx.navigateTo({
+            url: '/pages/movies/movie-detail/movie-detail?movieId=' + e.currentTarget.dataset.movieid 
+        })
+    },
+    // 聚焦
+    onBindFocus(e) {
+        console.log('来了？')
+        this.setData({
+            searchShow: true
+        })
+    },
+    // 失焦
+    // onBindBlur(e) {
+    //     console.log('走了。。。')
+    //     this.setData({
+    //         contentShow: true,
+    //         searchShow: false
+    //     })
+    // },
+    // 输入完成
+    onBindConfirm(e) {
+        // 详情查阅input事件文档
+        const text = e.detail.value
+        const url = searchUrl + '?q=' + text
+        this.getMovieList(url, 'searchResult', '')
+
+        this.setData({
+            inputText: text
+        })
+    },
+    onCancelImgTap(e) {
+        console.log(this.data.inputText)
+        this.setData({
+            searchShow: false,
+            searchResult: {},
+            inputText: ''
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-        
+
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        
+
     },
 
     /**

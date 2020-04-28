@@ -1,5 +1,13 @@
 <import src="./movie-list/movie-list-tmpl.wxml" />
-<view class="movies">
+<import src="../movie-gird/movie-gird-tmpl.wxml" />
+<!-- 搜索 -->
+<view class="search">
+    <icon type="search" class="search-img" size="13" color="#405f80" />
+    <input type="text" value="{{inputText}}" placeholder="你的名字、乱世佳人" placeholder-class="placeholder" bindfocus="onBindFocus" bindconfirm="onBindConfirm" />
+    <image wx:if="{{searchShow}}" src="/images/icon/xx.png" class="xx-img" catchtap="onCancelImgTap" />
+</view>
+<!-- 3大推荐模块 -->
+<view class="movies" wx:if="{{!searchShow}}">
     <view class="movies-tmpl">
         <!-- <block wx:for="{{3}}" wx:key="*this"> -->
         <template is="movieListTmpl" data="{{...top250}}"></template>
@@ -11,4 +19,9 @@
     <view class="movies-tmpl">
         <template is="movieListTmpl" data="{{...comingSoon}}"></template>
     </view>
+</view>
+<!-- moive-gird -->
+<view class="search-pannel" wx:if="{{searchShow}}">
+    <!-- <text>搜索页面</text> -->
+    <template is="movieGridTmpl" data="{{...searchResult}}"></template>
 </view>
