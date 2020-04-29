@@ -10,8 +10,8 @@ var posts_content = [{
     collection: '96',
     postId: 0,
     music: {
-      url: "",
-      title: "夜夜夜夜-齐秦",
+      url: "http://47.93.239.85/wp-content/uploads/2019/04/李志-天空之城.mp3",
+      title: "天空之城-B哥",
       coverImg: "http://y.gtimg.cn/music/photo_new/T002R150x150M000001TEc6V0kjpVC.jpg?max_age=2592000"
     }
   },
@@ -25,8 +25,8 @@ var posts_content = [{
     collection: '96',
     postId: 1,
     music: {
-      url: "",
-      title: "夜夜夜夜-齐秦",
+      url: "http://47.93.239.85/wp-content/uploads/2019/04/李志-天空之城.mp3",
+      title: "天空之城-B哥",
       coverImg: "http://y.gtimg.cn/music/photo_new/T002R150x150M000001TEc6V0kjpVC.jpg?max_age=2592000"
     }
   },
@@ -40,8 +40,8 @@ var posts_content = [{
     collection: '96',
     postId: 2,
     music: {
-      url: "",
-      title: "女儿情-万晓利",
+      url: "http://47.93.239.85/wp-content/uploads/2019/04/李志-天空之城.mp3",
+      title: "天空之城-B哥",
       coverImg: "http://y.gtimg.cn/music/photo_new/T002R150x150M000004Wv5BO30pPc0.jpg?max_age=2592000"
     }
   }

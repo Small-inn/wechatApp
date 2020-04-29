@@ -41,8 +41,8 @@ Page({
         director.avatar = data.directors[0].avatars.large
 
       }
-      director.name = data.directors[0].name;
-      director.id = data.directors[0].id;
+      director.name = data.directors[0].name
+      director.id = data.directors[0].id
     }
     let movie = {
       movieImg: data.images ? data.images.large : "",
@@ -58,13 +58,20 @@ Page({
       director: director,
       casts: convertToCastString(data.casts),
       castsInfo: convertToCastInfos(data.casts),
-      summary: data.summary
+      summary: data.summary || '暂无'
     }
     this.setData({
       movie
     })
   },
 
+  viewMoviePostImg(e) {
+    const src = e.currentTarget.dataset.src
+    wx.previewImage({
+      current: src, //  当前显示图片的http链接
+      urls: [src]
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

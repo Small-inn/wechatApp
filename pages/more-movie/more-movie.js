@@ -109,8 +109,17 @@ Page({
     console.log('下拉刷新')
     // wx.startPullDownRefresh()
     this.data.moviesData = {}
+    this.data.totalCount = 0
     wx.showNavigationBarLoading()
     http(this.data.dataUrl, this.getData)
+  },
+  // 跳转详情页
+  onMovieTap(e) {
+    console.log(e)
+    console.log(e.currentTarget.dataset.movieid)
+    wx.navigateTo({
+      url: '/pages/movies/movie-detail/movie-detail?movieId=' + e.currentTarget.dataset.movieid
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
