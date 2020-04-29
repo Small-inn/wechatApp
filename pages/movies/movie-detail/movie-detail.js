@@ -2,7 +2,8 @@
 const app = getApp()
 import {
   http,
-  convertToStarsArray,
+  convertToArray,
+  // convertToStarsArray,
   convertToCastString,
   convertToCastInfos
 } from '../../../utils/util'
@@ -52,7 +53,7 @@ Page({
       commentCount: data.comments_count,
       year: data.year,
       generes: data.genres.join("、"),
-      stars: convertToStarsArray(data.rating.stars),
+      stars: convertToArray(data.rating.stars),
       score: data.rating.average,
       director: director,
       casts: convertToCastString(data.casts),

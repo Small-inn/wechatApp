@@ -43,25 +43,25 @@ const http = (url, callback) => {
   })
 }
 
-const convertToStarsArray = (stars) => {
-  var num = stars.toString().substring(0, 1);
-  var array = [];
-  for (var i = 1; i <= 5; i++) {
-    if (i <= num) {
-      array.push(1);
-    } else {
-      array.push(0);
-    }
-  }
-  return array;
-}
+// const convertToStarsArray = (stars) => {
+//   var num = stars.toString().substring(0, 1);
+//   var array = [];
+//   for (var i = 1; i <= 5; i++) {
+//     if (i <= num) {
+//       array.push(1);
+//     } else {
+//       array.push(0);
+//     }
+//   }
+//   return array;
+// }
 
 const convertToCastString = (casts) => {
-  var castsjoin = "";
+  var castsjoin = ''
   for (var idx in casts) {
-    castsjoin = castsjoin + casts[idx].name + " / ";
+    castsjoin = castsjoin + casts[idx].name + " / "
   }
-  return castsjoin.substring(0, castsjoin.length - 2);
+  return castsjoin.substring(0, castsjoin.length - 2)
 }
 
 const convertToCastInfos = (casts) => {
@@ -71,16 +71,16 @@ const convertToCastInfos = (casts) => {
       img: casts[idx].avatars ? casts[idx].avatars.large : "",
       name: casts[idx].name
     }
-    castsArray.push(cast);
+    castsArray.push(cast)
   }
-  return castsArray;
+  return castsArray
 }
 
 module.exports = {
   formatTime,
   convertToArray,
   http,
-  convertToStarsArray,
+  // convertToStarsArray,
   convertToCastString,
   convertToCastInfos
 }

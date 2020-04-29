@@ -10,7 +10,7 @@ var posts_content = [{
     collection: '96',
     postId: 0,
     music: {
-      url: "https://cntaipingapp.oss-cn-hangzhou.aliyuncs.com/lxjk/ShoppingMall/activityManage/ilovechina.mp3",
+      url: "",
       title: "夜夜夜夜-齐秦",
       coverImg: "http://y.gtimg.cn/music/photo_new/T002R150x150M000001TEc6V0kjpVC.jpg?max_age=2592000"
     }
@@ -25,7 +25,7 @@ var posts_content = [{
     collection: '96',
     postId: 1,
     music: {
-      url: "https://cntaipingapp.oss-cn-hangzhou.aliyuncs.com/lxjk/ShoppingMall/activityManage/ilovechina.mp3",
+      url: "",
       title: "夜夜夜夜-齐秦",
       coverImg: "http://y.gtimg.cn/music/photo_new/T002R150x150M000001TEc6V0kjpVC.jpg?max_age=2592000"
     }
@@ -40,7 +40,7 @@ var posts_content = [{
     collection: '96',
     postId: 2,
     music: {
-      url: "https://cntaipingapp.oss-cn-hangzhou.aliyuncs.com/lxjk/ShoppingMall/activityManage/ilovechina.mp3",
+      url: "",
       title: "女儿情-万晓利",
       coverImg: "http://y.gtimg.cn/music/photo_new/T002R150x150M000004Wv5BO30pPc0.jpg?max_age=2592000"
     }
