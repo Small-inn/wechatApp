@@ -1,7 +1,7 @@
 <import src="post-item/post-item-template.wxml" />
 <view>
   <swiper indicator-dots="true" catchtap="onSwiperTap" autoplay="true" circular="true">
-    <block wx:for="{{imgUrls}}" wx:key="*this">
+    <block wx:for="{{imgUrls}}" wx:key="index">
       <swiper-item class="img-container">
         <image class="img-item" src="{{item.url}}" data-swiperId="{{item.id}}"></image>
       </swiper-item>
