@@ -89,29 +89,20 @@ Page({
     this.data.totalCount += 20
   },
   // 1.0 上拉加载， 配合scroll-view
-  onScrollTolower: function (e) {
-    console.log('加载更多')
-    wx.showNavigationBarLoading()
-    const requestUrl =
-      this.data.dataUrl + '?start=' + this.data.totalCount + '&count=20'
-    http(requestUrl, this.getData)
-  },
-  // 2.0 上拉加载
-  // onReachBottom: function (e) {
+  // onScrollTolower: function (e) {
   //   console.log('加载更多')
   //   wx.showNavigationBarLoading()
   //   const requestUrl =
   //     this.data.dataUrl + '?start=' + this.data.totalCount + '&count=20'
   //   http(requestUrl, this.getData)
   // },
-  // 下拉刷新
-  onPullDownRefresh: function (e) {
-    console.log('下拉刷新')
-    // wx.startPullDownRefresh()
-    this.data.moviesData = {}
-    this.data.totalCount = 0
+  // 2.0 上拉加载
+  onReachBottom: function (e) {
+    console.log('加载更多')
     wx.showNavigationBarLoading()
-    http(this.data.dataUrl, this.getData)
+    const requestUrl =
+      this.data.dataUrl + '?start=' + this.data.totalCount + '&count=20'
+    http(requestUrl, this.getData)
   },
   // 跳转详情页
   onMovieTap(e) {
@@ -120,6 +111,19 @@ Page({
     wx.navigateTo({
       url: '/pages/movies/movie-detail/movie-detail?movieId=' + e.currentTarget.dataset.movieid
     })
+  },
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  // 下拉刷新
+  onPullDownRefresh: function (e) {
+    console.log('下拉刷新')
+    // wx.startPullDownRefresh()
+    this.data.moviesData = {}
+    this.data.storeList = []
+    this.data.totalCount = 0
+    wx.showNavigationBarLoading()
+    http(this.data.dataUrl, this.getData)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -140,16 +144,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {},
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {},
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {},
 
   /**
    * 用户点击右上角分享
