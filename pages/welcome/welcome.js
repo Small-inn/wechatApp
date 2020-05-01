@@ -17,7 +17,7 @@ Page({
     //   url: '../posts/post',
     // })
     wx.switchTab({
-      url: '/pages/posts/post',
+      url: '/pages/movies/movies',
     })
   },
   onGotUserInfo(e) {
